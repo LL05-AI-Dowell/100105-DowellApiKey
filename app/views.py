@@ -77,8 +77,7 @@ class generateKey(APIView):
         serializer = ApiKeySerializer(data=field)
         if serializer.is_valid():
             serializer.save()
-            email_body = SendAPIKey.format(name, APIKey, api_services)
-            mail_status = send_email(email, name, email_body)
+            mail_status = send_email(email, name, APIKey,api_services)
             if mail_status:
                 return Response({
                     "success": True,
@@ -90,7 +89,11 @@ class generateKey(APIView):
                     "message": "Contact the admin"
                 }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            default_errors = serializer.errors
+            new_error = {}
+            for field_name, field_errors in default_errors.items():
+                new_error[field_name] = field_errors[0]
+            return Response(new_error, status=status.HTTP_400_BAD_REQUEST)
         
     def get(self, request, workspaceId):
         try:

@@ -220,8 +220,113 @@ class redeemVoucher(APIView):
             "success": True,
             "message": "Here is your voucher",
             "data": list(redeemVouchers.values())
-        })
+        },status=status.HTTP_200_OK)
         
+@method_decorator(csrf_exempt, name='dispatch')
+class documentdetails(APIView):
+    def get(self, request):
+        data = [
+            {
+                "api_service": "Living Lab scale",
+                "document_link": "https://github.com/DoWellUXLab/Living-Lab-scale",
+                "is_active": True
+            },
+            {
+                "api_service": "Living Lab Chat",
+                "document_link": "",
+                "is_active": False
+            },
+            {
+                "api_service": "DoWell Open Source License Compatibility check",
+                "document_link": "https://github.com/DoWellUXLab/DoWell-Open-Source-License-Compatibility-check",
+                "is_active": True
+            },
+            {
+                "api_service": "UX Live",
+                "document_link": "",
+                "is_active": False
+            },
+            {
+                "api_service": "Statistical distributions from bigdata ",
+                "document_link": "https://github.com/DoWellUXLab/DoWell-Statistical-distributions-from-bigdata",
+                "is_active": True
+            },
+            {
+                "api_service": "Dowell Payments",
+                "document_link": "https://github.com/DoWellUXLab/DoWell-Payments",
+                "is_active": True
+            },
+            {
+                "api_service": "Dowell QR Code Generator",
+                "document_link": "https://github.com/DoWellUXLab/Dowell-QR-Code-Generator",
+                "is_active": True
+            },
+            {
+                "api_service": "Dowell Email",
+                "document_link": "https://github.com/DoWellUXLab/DoWell-Email",
+                "is_active": True
+            },
+            {
+                "api_service": "Sampling from big data",
+                "document_link": "",
+                "is_active": False
+            },
+            {
+                "api_service": "DoWell Permutations",
+                "document_link": "https://github.com/DoWellUXLab/DoWell-Permutation",
+                "is_active": True
+            },
+            {
+                "api_service": "Shuffling of Big data",
+                "document_link": "https://github.com/DoWellUXLab/DoWell-Shuffling-of-Big-data",
+                "is_active": True
+            },
+            {
+                "api_service": "Dowell Wifi QR Code",
+                "document_link": "",
+                "is_active": False
+            },
+            {
+                "api_service": "Living lab Maps",
+                "document_link": "https://github.com/DoWellUXLab/Living-Lab-Maps",
+                "is_active": True
+            },
+            {
+                "api_service": "Secure repositories",
+                "document_link": "",
+                "is_active": False
+            },
+            {
+                "api_service": "Geometrical layout of Big Data",
+                "document_link": "https://github.com/DoWellUXLab/DoWell-Geometrical-layout-of-Big-Data",
+                "is_active": True
+            },
+            {
+                "api_service": "Central tendencies of Big data distributions",
+                "document_link": "https://github.com/DoWellUXLab/DoWell-Central-tendencies-of-Big-data-distributions",
+                "is_active": True
+            },
+            {
+                "api_service": "DoWell Coordinates",
+                "document_link": "https://github.com/DoWellUXLab/DoWell-Coordinates",
+                "is_active": True
+            },
+            {
+                "api_service":"DoWell Topic Generation",
+                "document_link": "https://github.com/DoWellUXLab/DoWell-Topic-Generation",
+                "is_active": True
+            },
+            {
+                "api_service":"DoWell Subscribe NewsLetter",
+                "document_link": "https://github.com/DoWellUXLab/DoWell-Subscribe-NewsLetter",
+                "is_active": True
+            }
+        ]
 
+        return Response({
+            "success": True,
+            "message": "List of Documentation",
+            "data":data
+        },status= status.HTTP_200_OK)
 
 

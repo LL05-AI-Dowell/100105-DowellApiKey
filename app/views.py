@@ -196,6 +196,7 @@ class redeemVoucher(APIView):
             "data": list(redeemVouchers.values())
         },status=status.HTTP_200_OK)
         
+        
 @method_decorator(csrf_exempt, name='dispatch')
 class documentdetails(APIView):
     def get(self, request):
